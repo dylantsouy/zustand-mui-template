@@ -1,0 +1,27 @@
+@import '../styles/color.scss';
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    .main-inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background: $background;
+        overflow-y: auto;
+        .table-root{
+            border:none;
+            .MuiDataGrid-main {
+                border-radius: 5px;
+                background-color: #fff;
+                box-shadow: $boxShadow;
+            }
+            .MuiDataGrid-row{
+                &:hover{
+                    background-color: $primary;
+                }
+            }
+        }
+    }
+}

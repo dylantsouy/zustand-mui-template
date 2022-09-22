@@ -1,0 +1,31 @@
+@keyframes openSide {
+    0% {
+        min-width: 55px;
+    }
+    100% {
+        min-width: 200px;
+    }
+}
+@keyframes closeSide {
+    0% {
+        min-width: 200px;
+    }
+    100% {
+        min-width: 55px;
+    }
+}
+
+@keyframes uploading {
+    0% {
+        transform: translateY(3px);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(3px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-8px);
+        opacity: 0;
+    }
+}

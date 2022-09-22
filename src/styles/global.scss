@@ -1,0 +1,191 @@
+@import './media.scss';
+@import './color.scss';
+/*
+ * This is for global css usage.
+ */
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+        sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    outline: none;
+}
+
+body,
+input,
+select,
+textarea,
+button {
+    -webkit-font-smoothing: antialiased;
+}
+html,
+#root {
+    width: 100%;
+    height: 100%;
+}
+body {
+    margin: 0;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+
+    &:global(.no-scroll) {
+        position: fixed;
+        overflow-y: scroll;
+    }
+}
+
+textarea,
+input {
+    /* stylelint-disable-next-line property-no-vendor-prefix */
+    -webkit-appearance: none;
+    border-radius: 0;
+
+    &::placeholder {
+        color: var(--light-gray);
+    }
+}
+
+input {
+    width: 100%;
+    border: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: var(--black);
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        /* stylelint-disable-next-line property-no-vendor-prefix */
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &:-webkit-autofill {
+        /* stylelint-disable-next-line property-no-vendor-prefix */
+        box-shadow: 0 0 0 30px #fff inset;
+    }
+
+    &[type='number'] {
+        /* stylelint-disable-next-line property-no-vendor-prefix */
+        -moz-appearance: textfield;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+@media print {
+    @page {
+        size: a4 portrait;
+        margin: 40px 0;
+    }
+
+    html,
+    body {
+        width: 794px;
+        height: 1123px;
+
+        &:global(.no-scroll) {
+            position: absolute;
+
+            /* stylelint-disable-next-line declaration-no-important */
+            top: 0 !important;
+        }
+
+        & > div:first-child {
+            display: none;
+        }
+    }
+}
+
+.ml-1 {
+    margin-left: 5px;
+}
+.ml-2 {
+    margin-left: 10px;
+}
+.ml-3 {
+    margin-left: 15px;
+}
+.ml-4 {
+    margin-left: 20px;
+}
+.mr-1 {
+    margin-right: 5px;
+}
+.mr-2 {
+    margin-right: 10px;
+}
+.mr-3 {
+    margin-right: 15px;
+}
+.mr-4 {
+    margin-right: 20px;
+}
+.mt-1 {
+    margin-top: 5px;
+}
+.mt-2 {
+    margin-top: 10px;
+}
+.mt-3 {
+    margin-top: 15px;
+}
+.mt-4 {
+    margin-top: 20px;
+}
+.mb-1 {
+    margin-bottom: 5px;
+}
+.mb-2 {
+    margin-bottom: 10px;
+}
+.mb-3 {
+    margin-bottom: 15px;
+}
+.mb-4 {
+    margin-bottom: 20px;
+}
+.primary {
+    color: $primary;
+}
+
+.Mui-disabled {
+    cursor: not-allowed !important;
+}
+
+.MuiDataGrid-virtualScroller {
+    &::-webkit-scrollbar {
+        height: 7px;
+        width: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: 10px !important;
+        background: #f0f0f0 !important;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px !important;
+        background: $gray !important;
+    }
+}

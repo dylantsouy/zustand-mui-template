@@ -1,0 +1,64 @@
+@import '../../styles/media.scss';
+@import '../../styles/color.scss';
+
+.login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 70px);
+    background-color: $background;
+
+    .MuiFormControl-root {
+        width: 100%;
+        margin: 10px 0;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    .root {
+        .MuiButtonBase-root {
+            width: 100%;
+        }
+    }
+    .version {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        font-size: 12px;
+        color: $gray;
+    }
+    & .modal {
+        display: flex;
+        background-color: #fff;
+        flex-direction: column;
+        width: 380px;
+        box-shadow: $boxShadow, 0 0 15px #cfcfcf;
+        border-radius: 10px;
+        padding: 35px;
+        margin-top: -10vh;
+
+        @media screen and ($media-phone) {
+            width: 100%;
+            box-shadow: none;
+        }
+
+        h1 {
+            font-weight: bold;
+            color: $primary;
+            margin-bottom: 24px;
+            font-family: Georgia, serif;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            color: #3e4046;
+            margin-bottom: 24px;
+            font-family: Georgia, serif;
+        }
+
+        span {
+            margin-top: 16px;
+            text-align: center;
+        }
+    }
+}

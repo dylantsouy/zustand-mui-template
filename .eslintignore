@@ -1,0 +1,9 @@
+*.config.js
+*.config.json
+node_module
+build
+.husky
+.vscode
+coverage
+stories/
+*.css

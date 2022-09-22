@@ -1,0 +1,53 @@
+@import '../../styles/color.scss';
+@import '../../styles/media.scss';
+
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    width: 100%;
+    padding: 8px 16px;
+    background-color: #fff;
+    box-shadow: $boxShadow;
+    .header-left {
+        display: flex;
+        align-items: center;
+        .header-bar {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: $gray;
+            transition: 0.3s;
+            @media screen and ($media-tablet), screen and ($media-phone) {
+                display: none;
+            }
+            &:hover {
+                color: $primary;
+            }
+        }
+        .page {
+            font-size: 20px;
+            font-weight: 600;
+            margin-left: 10px;
+            margin-bottom: 2px;
+        }
+    }
+    & .container {
+        & > h1 {
+            font-family: Georgia, serif;
+            font-size: 26px;
+            font-weight: bold;
+            color: #3e4046;
+        }
+    }
+    & .header-right {
+        display: flex;
+        align-items: center;
+
+        .logout-btn {
+            margin-left: 16px;
+            cursor: pointer;
+        }
+    }
+}

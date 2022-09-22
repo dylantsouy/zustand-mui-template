@@ -1,0 +1,121 @@
+@import '../../styles/color.scss';
+@import '../../styles/media.scss';
+@import '../../styles/animation.scss';
+
+.sidebar-wrapper {
+    height: 100%;
+    min-width: 200px;
+    background-color: #fff;
+    position: relative;
+    box-shadow: $boxShadow;
+    overflow-y: auto;
+    .title {
+        cursor: pointer;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h1 {
+            font-family: Georgia, serif;
+            color: $black;
+            font-weight: bold;
+            font-size: 26px;
+        }
+        span {
+            font-weight: bold;
+            font-size: 12px;
+            color: $primary;
+            margin-top: 15px;
+            margin-left: 5px;
+        }
+    }
+    .logo {
+        display: none;
+    }
+    .menuSliderContainer {
+        margin-top: 90px;
+        .listItem {
+            color: $gray;
+            margin: 5px 0;
+            position: relative;
+            .listItemIcon {
+                color: $gray;
+            }
+            &.active {
+                color: #333;
+                .listItemIcon {
+                    color: #333;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    border-radius: 10px;
+                    width: 5px;
+                    height: 100%;
+                    background-color: $primary;
+                }
+            }
+        }
+    }
+    @media screen and ($media-tablet), screen and ($media-phone) {
+        animation-name: closeSide;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        .title,
+        .MuiListItemText-primary {
+            display: none;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 23px;
+            img {
+                width: 25px;
+                height: 25px;
+                cursor: pointer;
+            }
+        }
+        .menuSliderContainer {
+            margin-top: 108px;
+        }
+        .MuiList-root {
+            .MuiButtonBase-root {
+                width: 55px;
+                margin: 12.5px 0;
+            }
+        }
+    }
+    &.hidden {
+        animation-name: closeSide;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        .title,
+        .MuiListItemText-primary {
+            display: none;
+        }
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 23px;
+            img {
+                width: 25px;
+                height: 25px;
+                cursor: pointer;
+            }
+        }
+        .menuSliderContainer {
+            margin-top: 108px;
+        }
+        .MuiList-root {
+            .MuiButtonBase-root {
+                width: 55px;
+                margin: 12.5px 0;
+            }
+        }
+    }
+}

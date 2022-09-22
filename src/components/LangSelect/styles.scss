@@ -1,0 +1,18 @@
+.langSelect-wrapper {
+    margin-left: 26px;
+    margin-right: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    .lang-select {
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        .MuiSelect-select{
+            padding: 0;
+            padding-right: 0 !important;
+            width: 25px;
+        }
+    }
+}
