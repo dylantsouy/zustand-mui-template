@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +15,7 @@ export default function Auth(props) {
     const [userInfo, setUserInfo] = useState({});
 
     // Check if the user login
-    const checkAuth = async () => {
+    const checkAuth = useCallback(() => {
         let userData = JSON.parse(localStorage.getItem('user'));
         let token = JSON.parse(localStorage.getItem('token'));
         if (!token) {
@@ -23,13 +23,15 @@ export default function Auth(props) {
             setUserInfo({});
             setIsAuthenticated(false);
             setIsLoading(false);
-            navigate('/login');
+            setTimeout(() => {
+                navigate('/login');
+            }, 10);
             return;
         }
         setUserInfo(userData);
         setIsAuthenticated(true);
         setIsLoading(false);
-    };
+    }, [navigate]);
 
     // Login func
     const login = async (data, setValidation, setLoading) => {

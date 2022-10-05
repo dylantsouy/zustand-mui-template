@@ -8,7 +8,11 @@ const PrivateRoute = (props) => {
 
     const checkIsPermitted = () => {
         const userPermissionsArray = JSON.parse(localStorage.getItem('permissionArray'));
-        return userPermissionsArray?.includes(permissionName);
+        if (userPermissionsArray?.length > 0) {
+            return userPermissionsArray?.includes(permissionName);
+        } else {
+            return false;
+        }
     };
 
     return checkIsPermitted() ? children : <Navigate to={redirectPath} replace />;
