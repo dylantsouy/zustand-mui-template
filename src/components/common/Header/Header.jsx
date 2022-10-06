@@ -1,21 +1,36 @@
 import { Tooltip } from '@mui/material';
-import React, { useContext } from 'react';
-import { AuthContext } from '../../auths/Auth';
+import React from 'react';
 import LangSelect from '../LangSelect';
 import './styles.scss';
 import PropTypes from 'prop-types';
 import FormatIndentIncreaseIcon from '@mui/icons-material/FormatIndentIncrease';
 import FormatIndentDecreaseIcon from '@mui/icons-material/FormatIndentDecrease';
-import { StoreContext } from '../../contexts/StoreContext';
 import { Logout } from '@mui/icons-material';
+import { useStorageStore } from 'store/store';
+import { useAuthStore } from 'store/auth';
+import { useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
+
 export default function Header(props) {
     const { login } = props;
-    const { logout } = useContext(AuthContext);
-    const { sidebarShow, toggleSidebar } = useContext(StoreContext);
+    const { clear } = useAuthStore();
+    const { enqueueSnackbar } = useSnackbar();
+    const navigate = useNavigate();
+    const { sidebarShow, setSidebarShow } = useStorageStore();
+
+    const logout = () => {
+        clear();
+        navigate('/login');
+        enqueueSnackbar('登出成功', { variant: 'success' });
+    };
 
     const logoutHandler = (e) => {
         e.preventDefault();
         logout();
+    };
+
+    const toggleSidebar = (e) => {
+        setSidebarShow(e);
     };
 
     return login ? (

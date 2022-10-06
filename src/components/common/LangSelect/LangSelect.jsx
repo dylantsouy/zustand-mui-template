@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import { LanguageContext } from '../../langs/LanguageContext';
-import { languageOptions } from '../../langs/index';
+import { LanguageContext } from 'langs/LanguageContext';
+import { languageOptions } from 'langs/index';
 import './styles.scss';
 import { Public } from '@mui/icons-material';
 

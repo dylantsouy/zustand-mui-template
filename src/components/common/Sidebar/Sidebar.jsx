@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './styles.scss';
 import { Box, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { Home } from '@mui/icons-material';
 import { useLocation } from 'react-router-dom';
-import { StoreContext } from '../../contexts/StoreContext';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation } from '../../langs/useTranslation';
-import HasPermission from '../../auths/HasPermission';
+import { useTranslation } from 'langs/useTranslation';
+import HasPermission from 'auths/HasPermission';
+import { useStorageStore } from 'store/store';
 
 export default function Sidebar() {
     const { t } = useTranslation('common');
-    const { sidebarShow } = useContext(StoreContext);
+    const { sidebarShow } = useStorageStore();
     const navigate = useNavigate();
     const { pathname } = useLocation();
 

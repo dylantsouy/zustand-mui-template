@@ -1,20 +1,32 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { AuthContext } from '../../auths/Auth';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TextField } from '@mui/material';
 import './styles.scss';
-import ConfirmButton from '../../components/ConfirmButton';
-import PasswordInput from '../../components/PasswordInput';
+import ConfirmButton from 'components/common/ConfirmButton';
+import PasswordInput from 'components/common/PasswordInput';
+import { permissionHandler } from 'auths/permission';
+import { useAuthStore } from 'store/auth';
+import { useSnackbar } from 'notistack';
 
 export default function Login() {
-    const { login, isAuthenticated } = useContext(AuthContext);
+    const { setAuthValue } = useAuthStore();
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(true);
+    const { enqueueSnackbar } = useSnackbar();
+    const [loading, setLoading] = useState(false);
     const [form, setForm] = useState({ account: '', password: '' });
     const [validation, setValidation] = useState({
         account: { valid: true, error: '' },
         password: { valid: true, error: '' },
     });
+
+    const login = async (data, setValidation, setLoading) => {
+        setAuthValue('user', { name: 123 });
+        setAuthValue('token', 'test');
+        setAuthValue('permissionArray', permissionHandler(0));
+        setLoading(false);
+        enqueueSnackbar('登入成功', { variant: 'success' });
+        navigate('/dashboard');
+    };
 
     const onChange = (e) => {
         setValidation({
@@ -26,15 +38,6 @@ export default function Login() {
             [e.target.id]: e.target.value,
         });
     };
-
-    useEffect(() => {
-        if (isAuthenticated) {
-            navigate('/dashboard');
-        } else {
-            setLoading(false);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     const onSubmit = async (e) => {
         e.preventDefault();

@@ -1,18 +1,19 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { useAuthStore } from 'store/auth';
 
 const HasPermission = (props) => {
     const { permission, children } = props;
     const [hasPermission, setHasPermission] = useState(false);
+    const { permissionArray } = useAuthStore();
 
     const checkHasPermission = useCallback(async () => {
         // get the user role permission
-        const permissionArray = JSON.parse(localStorage.getItem('permissionArray'));
         if (permissionArray) {
             const isPermission = permissionArray.includes(permission);
             setHasPermission(!!isPermission);
         }
-    }, [permission]);
+    }, [permission, permissionArray]);
 
     useEffect(() => {
         checkHasPermission();

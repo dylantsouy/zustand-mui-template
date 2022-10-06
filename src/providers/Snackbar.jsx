@@ -1,6 +1,6 @@
 import React from 'react';
 import { SnackbarProvider } from 'notistack'; // For snackbar
-import SnackCloseBtn from '../components/SnackCloseBtn';
+import SnackCloseBtn from 'components/plugin/SnackCloseBtn';
 import PropTypes from 'prop-types';
 
 const Snackbar = (props) => {

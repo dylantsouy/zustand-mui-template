@@ -1,17 +1,16 @@
-import React, { useContext, useEffect } from 'react';
-import { AuthContext } from '../auths/Auth';
-import { useLocation } from 'react-router-dom';
-import Loading from '../components/Loading';
-import Header from '../components/Header';
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Header from 'components/common/Header';
 import PropTypes from 'prop-types';
-import Sidebar from '../components/Sidebar';
+import Sidebar from 'components/common/Sidebar';
 import './styles.scss';
+import { useAuthStore } from 'store/auth';
 
 const Layout = (props) => {
     const { children } = props;
     const { pathname } = useLocation();
-    // Declare the useContext() so this component will have the same context as AuthContext.Provider
-    const { isAuthenticated, isLoading, checkAuth } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const { token, clear } = useAuthStore();
 
     const pageHandler = () => {
         switch (pathname) {
@@ -35,17 +34,20 @@ const Layout = (props) => {
                 );
         }
     };
-    // To check if still have Authenticated when router change
+
     useEffect(() => {
-        checkAuth();
-    }, [checkAuth, isAuthenticated]);
+        if (token && pathname === '/login') {
+            navigate('/dashboard');
+            return;
+        }
+        if (pathname !== 'login' && !token) {
+            clear();
+            navigate('/login');
+            return;
+        }
+    }, [clear, navigate, pathname, token]);
 
-    if (isLoading || (!isAuthenticated && pathname !== '/login')) {
-        // Full page loading
-        return <Loading size={60} />;
-    }
-
-    return <>{pageHandler()}</>;
+    return pageHandler();
 };
 export default Layout;
 
