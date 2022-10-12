@@ -7,9 +7,11 @@ import PasswordInput from 'components/common/PasswordInput';
 import { permissionHandler } from 'auths/permission';
 import { useAuthStore } from 'store/auth';
 import { useSnackbar } from 'notistack';
+import { useTranslation } from 'langs/useTranslation';
 
 export default function Login() {
     const { setAuthValue } = useAuthStore();
+    const { t } = useTranslation('common');
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
     const [loading, setLoading] = useState(false);
@@ -65,7 +67,7 @@ export default function Login() {
             <div className='login-wrapper'>
                 <div className='modal'>
                     <h1>Logo</h1>
-                    <h2>Subtitle</h2>
+                    <h2>{t('dashboard')}</h2>
                     <form className='root' noValidate onSubmit={onSubmit}>
                         <TextField
                             id='account'

@@ -24,6 +24,12 @@ module.exports = {
         'react/jsx-uses-react': 'error',
         'no-unused-vars': 'warn',
         'react-hooks/exhaustive-deps': 'warn', // check effect deps
+        'no-restricted-imports': [
+            'error',
+            {
+                patterns: ['@mui/*/*/*', '!@mui/material/test-utils/*'],
+            },
+        ],
     },
     // React version need to specified in eslint-plugin-react settings
     settings: {

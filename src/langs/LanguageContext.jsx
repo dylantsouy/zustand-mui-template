@@ -5,4 +5,5 @@ import { dictionaryList } from './index';
 export const LanguageContext = React.createContext({
     userLanguage: 'tw',
     dictionary: dictionaryList.tw,
+    userLanguageChange: () => {},
 });

@@ -14,13 +14,13 @@ export const LanguageProvider = (props) => {
     }, []);
 
     const fetchData = async () => {
-        let lang = await localforage.getItem('rcml-lang');
+        let lang = await localforage.getItem('i18-lang');
         /**
-         * To prevent error about someday someone to change lang name e.g. 'zh_tw' => 'tw', and user still have old rcml-lang value 'zh_tw' in browser indexDB,
+         * To prevent error about someday someone to change lang name e.g. 'zh_tw' => 'tw', and user still have old i18-lang value 'zh_tw' in browser indexDB,
          * so give it below conditional expressions to see if now includes this value, if not give it to default value 'en'
          * */
-        if (!Object.keys(dictionaryList).includes(lang)) {
-            await localforage.setItem('rcml-lang', 'tw');
+        if (!Object.prototype.hasOwnProperty.call(dictionaryList, lang)) {
+            await localforage.setItem('i18-lang', 'tw');
             setUserLanguage('tw');
         } else {
             setUserLanguage(lang || 'tw');
@@ -33,7 +33,7 @@ export const LanguageProvider = (props) => {
         userLanguageChange: async (selected) => {
             const newLanguage = languageOptions[selected] ? selected : 'tw';
             setUserLanguage(newLanguage);
-            await localforage.setItem('rcml-lang', newLanguage);
+            await localforage.setItem('i18-lang', newLanguage);
         },
     };
 
